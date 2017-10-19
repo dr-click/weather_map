@@ -30,7 +30,7 @@ module WeatherApi
     end
 
     def self.data_expires_after
-      AppConfig.openweathermap["data_expires_after"]
+      AppConfig.openweathermap["data_expires_after"] || 10
     end
 
     def self.find(country, city)
