@@ -4,8 +4,8 @@ class Enquiry < ApplicationRecord
 
   before_validation do
     self.last_update_at = Time.now
-    self.country = self.country.downcase unless self.country.blank?
-    self.city = self.city.downcase unless self.city.blank?
+    self.country = self.country.downcase.strip unless self.country.blank?
+    self.city = self.city.downcase.strip unless self.city.blank?
   end
 
   # TODO: Force the value of each Enquiry field to contains city only or country only
