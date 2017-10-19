@@ -1,11 +1,5 @@
 class EnquiriesController < ApplicationController
-  before_action :set_enquiry, only: [:show, :edit, :update, :destroy]
-
-  # GET /enquiries
-  # GET /enquiries.json
-  # def index
-  #   @enquiries = Enquiry.all
-  # end
+  before_action :set_enquiry, only: [:show]
 
   # GET /enquiries/1
   # GET /enquiries/1.json
@@ -16,16 +10,13 @@ class EnquiriesController < ApplicationController
   def new
     @enquiry = Enquiry.new
   end
-
-  # GET /enquiries/1/edit
-  def edit
-  end
-
+  
   # POST /enquiries
   # POST /enquiries.json
   def create
     @enquiry = Enquiry.new(enquiry_params)
-
+    #  WeatherApi::CurrentWeather.new(AppConfig.openweathermap["api_key"]).fetch_by_country_and_city("Egypt", "Alexandria"
+    WeatherApi::WeatherEnquiry.find("Egypt", "Alexandria")
     respond_to do |format|
       if @enquiry.save
         format.html { redirect_to @enquiry, notice: 'Enquiry was successfully created.' }
