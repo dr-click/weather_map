@@ -2,7 +2,7 @@ module WeatherApi
   #My own logic for fetch data from database or API
   class WeatherEnquiry
     # TODO: User can choose between cached resulted of fresh results
-    # TODO: Expire valud may be in seconds
+    # TODO: Expire value may be in seconds
     # TODO: The engine should be configured with the table name of storing cached results
 
     def initialize(res_hash)
