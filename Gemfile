@@ -14,7 +14,8 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-
+gem 'jquery-ui-rails'
+gem 'turboboost'
 gem 'weather_api', path: 'vendor/engines/weather_api'
 
 group :development, :test do

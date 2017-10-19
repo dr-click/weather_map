@@ -1,37 +1,26 @@
 <%= form_with(model: enquiry, local: true) do |form| %>
   <% if enquiry.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(enquiry.errors.count, "error") %> prohibited this enquiry from being saved:</h2>
-
-      <ul>
-      <% enquiry.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <div id="error_explanation">
+    <h2><%= pluralize(enquiry.errors.count, "error") %> prohibited this user from being saved:</h2>
+    <ul>
+      <% enquiry.errors.full_messages.each do |msg| %>
+        <li> <%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :country %>
-    <%= form.text_field :country, id: :enquiry_country %>
+    <%= form.text_field :country, id: :enquiry_country, class: "form-control", placeholder: "Enter Country" %>
+    <small id="countryHelp" class="form-text text-muted">Enter country name, example: Egypt, EG</small>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :city %>
-    <%= form.text_field :city, id: :enquiry_city %>
+    <%= form.text_field :city, id: :enquiry_city, class: "form-control has-error", placeholder: "Enter City" %>
+    <small id="cityHelp" class="form-text text-muted">Enter city name, example: Alexandria</small>
   </div>
 
-  <div class="field">
-    <%= form.label :results %>
-    <%= form.text_field :results, id: :enquiry_results %>
-  </div>
-
-  <div class="field">
-    <%= form.label :last_update_at %>
-    <%= form.datetime_select :last_update_at, id: :enquiry_last_update_at %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <button type="submit" class="btn btn-primary">Search</button>
 <% end %>

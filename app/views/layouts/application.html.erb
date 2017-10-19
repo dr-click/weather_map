@@ -3,12 +3,30 @@
   <head>
     <title>WeatherMap</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="jumbotron">
+      <h1>WeatherMap</h1>
+      <p>Simple weather app to display the current weather in a given location to the user</p>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+
+    <footer class="mt-5" id="layout-footer">
+      <div class="container-fluid bg-dark ">
+        <div class="row">
+          <div class="col-md-12">
+            <p class="text-light bg-gray text-center p-4">
+           		Powered by <a href="https://github.com/dr-click" target="_blank">Dr-Click</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </body>
 </html>
