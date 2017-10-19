@@ -5,9 +5,8 @@ RSpec.describe "enquiries/show", type: :view do
     @enquiry = assign(:enquiry, FactoryGirl.create(:enquiry))
   end
 
-  it "renders attributes in <p>" do
+  it "renders attributes in <div>" do
     render
-    expect(rendered).to match(/Country/)
-    expect(rendered).to match(/City/)
+    expect(rendered).to match(/Search/)
   end
 end

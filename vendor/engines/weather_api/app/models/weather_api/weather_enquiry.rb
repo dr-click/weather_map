@@ -13,10 +13,6 @@ module WeatherApi
       @results
     end
 
-    def coord
-      @results.any? ? @results["coord"] : {}
-    end
-
     def weather
       @results.any? ? @results["weather"].first : {}
     end
