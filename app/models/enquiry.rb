@@ -19,6 +19,8 @@ class Enquiry < ApplicationRecord
     self.results.any?
   end
 
+  # Returns weather map hash results in object
+  # WeatherApi::WeatherEnquiry model is located in vender/engines/weather_api/app/models/weather_api/
   def weather_enquiry
     WeatherApi::WeatherEnquiry.new(self.results)
   end

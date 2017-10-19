@@ -25,10 +25,12 @@ module WeatherApi
     private
     #######
 
+    # fetch call using OpenWeather gem by calling OpenWeather::Current.city
     def fetch
       parse_results(OpenWeather::Current.city("#{@city}, #{@country}", @options))
     end
 
+    # parse the results come from WeatherMAPApi and check the status
     def parse_results(results)
       if results && results["cod"] == 200
         WeatherApi::WeatherEnquiry.new(results)

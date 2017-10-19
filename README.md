@@ -2,7 +2,7 @@
 
 ###### Simple weather application to display the current weather in a given location
 
-##Project Details:
+## Project Details:
 
 * Environment
 
