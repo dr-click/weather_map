@@ -9,7 +9,7 @@
   <body>
     <div class="jumbotron">
       <h1>WeatherMap</h1>
-      <p>Simple weather app to display the current weather in a given location to the user</p>
+      <p>Simple weather app to display the current weather in a given location</p>
     </div>
     <div class="container">
       <% flash.each do |type, message| %>
@@ -18,7 +18,7 @@
           <%= message %>
         </div>
       <% end %>
-      
+
       <%= yield %>
     </div>
 
