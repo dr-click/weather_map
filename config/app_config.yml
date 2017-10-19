@@ -4,7 +4,7 @@ default: &default
   host_url: "http://localhost:3000"
   openweathermap:
     api_key: "bfaaaa830cc67a2fc9c305ad81bc2948"
-    data_expires_after: 10 # in minutes
+    data_expires_after: 1 # in minutes
 
 development:
   <<: *default
@@ -16,3 +16,4 @@ production:
   <<: *default
   openweathermap:
     api_key: "858f37c3c7dd4e38b141a6e53847070a"
+    data_expires_after: 10 # in minutes
