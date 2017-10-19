@@ -1,0 +1,17 @@
+default: &default
+  application_name: "Weather Map"
+  server_host: "localhost:3000"
+  host_url: "http://localhost:3000"
+  openweathermap:
+    api_key: "bfaaaa830cc67a2fc9c305ad81bc2948"
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  openweathermap:
+    api_key: "858f37c3c7dd4e38b141a6e53847070a"
