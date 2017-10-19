@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :enquiry do
-    country "MyString"
-    city "MyString"
-    results ""
-    last_update_at "2017-10-17 08:33:26"
+    country Faker::Address.unique.country
+    city Faker::Address.unique.city
+    results "{}"
+    last_update_at Time.now
   end
 end

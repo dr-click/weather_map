@@ -1,5 +1,29 @@
 require 'rails_helper'
 
 RSpec.describe Enquiry, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'should be valid with country, city, results, last_update_at' do
+    enquiry = FactoryGirl.build(:enquiry)
+    expect(enquiry).to be_valid
+  end
+
+  it 'should not be valid without country' do
+    enquiry = FactoryGirl.build(:enquiry, country: nil)
+    expect(enquiry).to_not be_valid
+  end
+
+  it 'should not be valid without city' do
+    enquiry = FactoryGirl.build(:enquiry, city: nil)
+    expect(enquiry).to_not be_valid
+  end
+
+  it 'should not be valid without results' do
+    enquiry = FactoryGirl.build(:enquiry, results: nil)
+    expect(enquiry).to_not be_valid
+  end
+
+  it 'should be unique country and city' do
+    enquiry = FactoryGirl.create(:enquiry)
+    enquiry2 = FactoryGirl.build(:enquiry, country: enquiry.country, city: enquiry.city)
+    expect(enquiry2).to_not be_valid
+  end
 end
