@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Country:</strong>
+  <%= @enquiry.country %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @enquiry.city %>
+</p>
+
+<p>
+  <strong>Results:</strong>
+  <%= @enquiry.results %>
+</p>
+
+<p>
+  <strong>Last update at:</strong>
+  <%= @enquiry.last_update_at %>
+</p>
+
+<%= link_to 'Edit', edit_enquiry_path(@enquiry) %> |
+<%= link_to 'Back', enquiries_path %>
