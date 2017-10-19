@@ -10,7 +10,8 @@ module WeatherApi
       opts.each do |op|
         op.each { |k,v| @options = @options.merge({k => v}) } if op.is_a? Hash
       end
-      #  units: "metric",
+
+      @options = @options.merge({:units => "metric"}) #metric, #imperial
     end
 
     def fetch_by_country_and_city(country, city)

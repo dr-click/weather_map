@@ -13,14 +13,24 @@ module WeatherApi
       @results
     end
 
-    # {"coord"=>{"lon"=>29.92, "lat"=>31.2}, "weather"=>[{"id"=>800, "main"=>"Clear", "description"=>"clear sky", "icon"=>"01n"}], "base"=>"stations", "main"=>{"temp"=>293.965, "pressure"=>1031.26, "humidity"=>100, "temp_min"=>293.965, "temp_max"=>293.965, "sea_level"=>1031.74, "grnd_level"=>1031.26}, "wind"=>{"speed"=>3.46, "deg"=>33.0021}, "clouds"=>{"all"=>0}, "dt"=>1508273008, "sys"=>{"message"=>0.0036, "country"=>"EG", "sunrise"=>1508213105, "sunset"=>1508253923}, "id"=>360015, "name"=>"Ash Shāţibī", "cod"=>200}
-    
     def coord
       @results.any? ? @results["coord"] : {}
     end
 
     def weather
       @results.any? ? @results["weather"].first : {}
+    end
+
+    def main
+      @results.any? ? @results["main"] : {}
+    end
+
+    def wind
+      @results.any? ? @results["wind"] : {}
+    end
+
+    def visibility
+      @results.any? ? @results["visibility"].to_i / 1000 : 0
     end
 
     def self.data_expires_after

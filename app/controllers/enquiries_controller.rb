@@ -4,22 +4,29 @@ class EnquiriesController < ApplicationController
   # GET /enquiries/1
   # GET /enquiries/1.json
   def show
+    @weather_enquiry = @enquiry.weather_enquiry
+    flash.now[:alert] = "Enquiry Not Found, Please Search Again !!" unless @enquiry.has_data?
   end
 
   # GET /enquiries/new
   def new
     @enquiry = Enquiry.new
   end
-  
+
   # POST /enquiries
   # POST /enquiries.json
   def create
     @enquiry = Enquiry.new(enquiry_params)
-    #  WeatherApi::CurrentWeather.new(AppConfig.openweathermap["api_key"]).fetch_by_country_and_city("Egypt", "Alexandria"
-    WeatherApi::WeatherEnquiry.find("Egypt", "Alexandria")
     respond_to do |format|
-      if @enquiry.save
-        format.html { redirect_to @enquiry, notice: 'Enquiry was successfully created.' }
+      if @enquiry.valid?
+        @enquiry = WeatherApi::WeatherEnquiry.find(@enquiry.country, @enquiry.city)
+        if @enquiry.has_data?
+          flash[:notice] = "Enquiry was successfully created"
+        else
+          flash[:alert] = "Enquiry Not Found, Please Search Again !!"
+        end
+
+        format.html { redirect_to @enquiry}
         format.json { render :show, status: :created, location: @enquiry }
       else
         format.html { render :new }
@@ -28,31 +35,11 @@ class EnquiriesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /enquiries/1
-  # PATCH/PUT /enquiries/1.json
-  # def update
-  #   respond_to do |format|
-  #     if @enquiry.update(enquiry_params)
-  #       format.html { redirect_to @enquiry, notice: 'Enquiry was successfully updated.' }
-  #       format.json { render :show, status: :ok, location: @enquiry }
-  #     else
-  #       format.html { render :edit }
-  #       format.json { render json: @enquiry.errors, status: :unprocessable_entity }
-  #     end
-  #   end
-  # end
 
-  # DELETE /enquiries/1
-  # DELETE /enquiries/1.json
-  # def destroy
-  #   @enquiry.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to enquiries_url, notice: 'Enquiry was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
-
+  #######
   private
+  #######
+
     # Use callbacks to share common setup or constraints between actions.
     def set_enquiry
       @enquiry = Enquiry.find(params[:id])

@@ -12,6 +12,13 @@
       <p>Simple weather app to display the current weather in a given location to the user</p>
     </div>
     <div class="container">
+      <% flash.each do |type, message| %>
+        <div class="alert <%= bootstrap_class_for(type.to_sym) %>">
+          <button class="close" data-dismiss="alert">×</button>
+          <%= message %>
+        </div>
+      <% end %>
+      
       <%= yield %>
     </div>
 
